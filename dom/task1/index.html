@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset=utf-8 />
+    <title>task1</title>
+  <style>
+      table {
+          border-collapse: collapse;
+      }
+      td {
+          border: 1px solid black;
+          text-align: center;
+      }
+       .red {
+           background-color: red;
+       }
+       .white {
+           background-color: white;
+      }
+
+  </style>
+</head>
+<body>
+
+<script src="task1.js"></script>
+<button onclick="hets()">Click me</button>
+<script>
+    function hets() {
+        var r = document.getElementsByClassName("red");
+        var w = document.getElementsByClassName("white");
+        console.log(r);
+        console.log(w);
+
+        console.log(r.length);
+
+        Array.prototype.forEach.call(r, function(cell) {
+            console.log(cell);
+            cell.className = 'white';
+        });
+
+        // for (var j = 0; j < r.length + 1 ; j++) {
+        //   cell = r[j];
+        //     console.log(cell);
+        //   cell.className = 'white';
+        // }
+
+        //for (var i = 0; i <= w.length-1; i++) {
+        //    arwhi = w[i];
+        //    console.log(arwhi);
+        //    arwhi.className = 'white';
+       // };
+
+    };
+</script>
+</body>
+
+</html>
