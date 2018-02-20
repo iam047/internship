@@ -9,18 +9,17 @@ var page = {
     },
     game_inerface: {
         table: null,
-        init: function(){
+        init: function() {
             game.start();
-            this.div = document.querySelector(".field");
+            this.div = document.querySelector('.field');
             this.draw_field();
             var self = this;
-            this.div.addEventListener("click", function (e) {
+            this.div.addEventListener('click', function (e) {
                 x = e.target.cellIndex;
                 y = e.target.parentNode.rowIndex;
                 if(game.field[x][y].is_mine) {
                     var b = document.getElementsByTagName('td');
-                    console.log(b);
-                    for(var i = 0; i < b.length; i++){
+                    for(var i = 0; i < b.length; i++) {
                         if (b[i].className === 'mine') {
                             b[i].className = 'bomb';
                         } else {
@@ -28,22 +27,22 @@ var page = {
                         }
                     }
                 }
-                if(e.target.matches("td") && !e.target.matches("lock"))  self.open(e);
+                if(e.target.matches('td') && !e.target.matches('lock')) self.open(e);
 
             });
-            this.div.addEventListener("contextmenu", function (e) {
-                if(e.target.matches("td"))  self.lock(e);
+            this.div.addEventListener('contextmenu', function (e) {
+                if(e.target.matches('td'))  self.lock(e);
 
             });
         },
-        draw_field: function(){
+        draw_field: function() {
             this.div.innerHTML="";
-            var table = document.createElement("TABLE");
+            var table = document.createElement('TABLE');
             this.table = table;
             for(var i = 0; i < game.height; i++){
-                var tr = document.createElement("TR");
+                var tr = document.createElement('TR');
                 for(j = 0; j < game.width; j++){
-                    var td = document.createElement("TD");
+                    var td = document.createElement('TD');
                        //td.innerText = game.field[j][i].mine_around;
                        //if(game.field[j][i].is_mine) td.style.background = 'black';
                        if(game.field[j][i].is_mine) td.className = 'mine';
@@ -58,16 +57,14 @@ var page = {
             y = e.target.parentNode.rowIndex;
             this.recurse_open(x,y);
         },
-        recurse_open: function(x,y){
+        recurse_open: function(x,y) {
             var td = this.table.rows[y].children[x];
             if(game.field[x][y].is_open) return;
             if(game.field[x][y].is_mine){
-                alert("game over");
-              //game.start();
-              //this.draw_field();
-
+                alert('game over');
+                return;
             }else {
-                if (!(td.className === "lock")) {
+                if (!(td.className === 'lock')) {
                     td.innerHTML = game.field[x][y].mine_around;
                     game.field[x][y].is_open = true;
                     if (game.field[x][y].mine_around === 0) {
@@ -80,8 +77,8 @@ var page = {
                         }
                     }
                 }
-                if (!(td.className === "lock")) {
-                    td.classList.add("open");
+                if (!(td.className === 'lock')) {
+                    td.classList.add('open');
                     game.open_count++;
                     if (game.width * game.height - game.mine_count === game.open_count) {
                         alert("you win");
@@ -89,16 +86,19 @@ var page = {
                 }
             }
         },
-        lock: function(e){
+        lock: function(e) {
             x = e.target.cellIndex;
             y = e.target.parentNode.rowIndex;
             if(game.field[x][y].is_open) return;
-            e.target.classList.toggle("lock");
+            e.target.classList.toggle('lock');
             e.preventDefault();
         }
     }
 };
+function restart() {
+    page.init();
+};
 
-window.onload = function(){
+window.onload = function() {
    page.init();
 };
