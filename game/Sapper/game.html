@@ -4,27 +4,42 @@
     <meta charset=utf-8 />
     <title>task1</title>
   <style>
-      table {
-          border-collapse: collapse;
+      *{
+          margin: 0;
+          padding: 0;
+          border: 0;
       }
-      td {
-          border: 1px solid black;
-          text-align: center;
-          padding: 20px;
-          background: linear-gradient(to bottom, #cc4a1f, #cc0c2e);
+
+      .field table {
+          border: 4px solid black;
+
+      }
+      .field td {
+          border: 2px solid black;
+          width: 50px;
+          height: 50px;
+          background: silver;
       }
 
       td.open {
           background: white;
           text-align: center;
           position: relative;
+
       }
 
       td.lock{
-          position: absolute;
-          border-radius: 50%;
-          background: aqua;
-          content: "";
+          background-size: 50px auto;
+          background-image: url("http://www.iconsearch.ru/uploads/icons/iconslandgps/128x128/flag1rightgreen2.png" );
+      }
+      td.mine{
+
+      }
+
+      td.bomb{
+          background: white;
+          background-size: 50px auto;
+          background-image: url("http://www.iconsearch.ru/uploads/icons/nuvola2/128x128/clanbomber.png");
       }
   </style>
 </head>
@@ -34,3 +49,4 @@
 <script src="main.js"></script>
 </body>
 </html>
+

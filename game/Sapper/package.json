@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint snappe.js",
-    "lint:watch": "esw snappe.js -w"
+    "lint": "eslint main.js",
+    "lint:watch": "esw main.js -w"
   },
   "author": "",
   "license": "ISC",
