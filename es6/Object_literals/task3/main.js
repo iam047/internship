@@ -1,6 +1,6 @@
 let ids = {
     next: 0,
-    get  () {return this.next++;},
+    get () {return this.next++; },
 };
 
 console.log(ids.get());
