@@ -1,6 +1,6 @@
-const json = (response) => {
+const json = (response) =>{
     return response.json()
-}
+};
 
 fetch('http://www.json-generator.com/api/json/get/cfQCylRjuG')
     .then(json)
@@ -13,11 +13,10 @@ fetch('http://www.json-generator.com/api/json/get/cfQCylRjuG')
     })
     .then(() =>{
         fetch('http://www.json-generator.com/api/json/get/cfVGucaXPC')
-            .then(status)
             .then(json)
             .then(function(dating) {
                let output = '<h2>Users</h2>';
-               dating.forEach(function (user) {
+               dating.forEach((user) => {
                    output += `
                    <ul>
                       <li>username: ${user.username}</li>
@@ -30,6 +29,9 @@ fetch('http://www.json-generator.com/api/json/get/cfQCylRjuG')
                });
                document.getElementById('output').innerHTML = output;
             })
+
     }).catch((error) => {
     console.log('error', error);
+
 });
+
