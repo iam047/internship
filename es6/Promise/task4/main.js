@@ -19,7 +19,7 @@ class MyPromise {
             }
         };
         const reject = (error) => {
-            if(this._state === 'pending') {
+            if (this._state === 'pending') {
                 this._state = 'reject';
                 let er = error;
                 this.promise.reject.forEach((fn) => {
@@ -31,8 +31,8 @@ class MyPromise {
         callback(resolve, reject);
     }
 
-    then(resolve, reject) {
-        if(this._state === 'pending'){
+    then (resolve, reject) {
+        if (this._state === 'pending') {
            resolve && this.promise.resolve.push(resolve);
            reject && this.promise.reject.push(reject);
             console.log(this.promise);
