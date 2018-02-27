@@ -18,7 +18,7 @@ class MyPromise {
                 }
             }
         };
-        const reject = (error) => {
+        const reject = error => {
             if (this._state === 'pending') {
                 this._state = 'reject';
                 let er = error;
