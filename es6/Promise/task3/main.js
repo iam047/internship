@@ -13,12 +13,8 @@ const arr = (obj) =>{
 };
 Promise.all(arrurl.map(url => fetch(url)))
     .then(resp => Promise.all( resp.map(r => r.text()) ))
-    .then(result => {
-        arr(result);
-
-    }).catch((error) => {
-    console.log('error', error)
-    });
+    .then(result => { arr(result); })
+    .catch((error) => { console.log('error', error) });
 
 async function fetchURLs() {
          await Promise.all([
