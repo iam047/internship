@@ -47,4 +47,4 @@ function mul(val) {
 }
 const my = new MyPromise(resolve => setTimeout(() => resolve(7),1000));
 my.then(value => mul(value))
-  .then(val=> console.log(val));
+  .then(val => console.log(val));
