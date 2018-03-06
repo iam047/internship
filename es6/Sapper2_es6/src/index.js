@@ -2,7 +2,7 @@ import {Table} from './table';
 
 const row = +prompt('Кількість рядків', 10);
 const cell = +prompt('Кількість рядків', 10);
-const mine = +prompt('Кількість рядків', 7);
+const mine = +prompt('Кількість рядків', 15);
 
 const d = new Table(row,cell,mine).generationTable();
 function addclass (e) {
@@ -19,18 +19,42 @@ function addclass (e) {
             alert('You lose o_0');
             confirm('You wont restart game?') ? reload() : false;
         }
-        target.className !== 'lock' ? target.className = 'open': false;
+        if(target.className !== 'lock') {
+           target.className = 'open';
+            // const myTable = document.getElementById('myTable');
+            // const cell = myTable.children[0].children[x].children[y];
+            // console.log(myTable);
+            // console.log(cell);
+            // let {x} = target;
+         // console.log(x);
+         // // for(let i =0; i < row; i++){
+         // //     x.className = 'open'
+                    //RecursOpen(x)
+         // // }
+        }
+
 
 
     }
 }
 
-    function reload() {
+function reload() {
             location.reload();
-    }
+}
+
+// function RecursOpen(x) {
+//         if (x.className === 'close') {
+//             x.className = 'open';
+//             return x +=x;
+//            RecursOpen(x);
+//             }
+// };
 
 
 myTable.addEventListener('click', addclass);
+
+
+
 function add (e) {
     const event = e || window.event;
     const target = event.CurrentTarget || event.srcElement;
