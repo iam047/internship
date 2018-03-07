@@ -17,43 +17,81 @@ function addclass (e) {
                 }
             }
             alert('You lose o_0');
-            confirm('You wont restart game?') ? reload() : false;
+            confirm('You wont restart game?') ? reload() : alert('quit the game');
         }
-        if(target.className !== 'lock') {
-           target.className = 'open';
-            // const myTable = document.getElementById('myTable');
-            // const cell = myTable.children[0].children[x].children[y];
-            // console.log(myTable);
-            // console.log(cell);
-            // let {x} = target;
-         // console.log(x);
-         // // for(let i =0; i < row; i++){
-         // //     x.className = 'open'
-                    //RecursOpen(x)
-         // // }
-        }
+    }
+}
+myTable.addEventListener('click', addclass);
+
+function reload() {
+    location.reload();
+}
 
 
+function open (e) {
+    const event = e || window.event;
+    const target = event.CurrentTarget || event.srcElement;
+    if (target.tagName === 'TD') {
+        const indexOf = Array.prototype.indexOf;
+        const y = indexOf.call(myTable.children[0].children, e.target.parentNode);
+        const x = indexOf.call(e.target.parentNode.children, e.target);
+        if (target.className !== 'close lock') {
+            if(target.className !== 'open') {
+                RecurseOpen(x, y);
+                let td = document.getElementsByClassName('close');
+                if (td.length === 0) {
+                    alert('you win');
+                    confirm('You wont restart game?') ? reload() : alert('quit the game');
+
+                }
+            }
+        }
 
     }
 }
+myTable.addEventListener('click', open);
 
-function reload() {
-            location.reload();
+function openCell(x, y) {
+    const myTable = document.getElementById('myTable');
+    const cell = myTable.children[0].children[y].children[x];
+    if(cell.className === 'open'){
+        return false;
+    } else {
+        if(cell.className !=='mine') {
+            if(cell.className !== 'close lock') {
+                cell.className = 'open'
+            }
+        }
+    }
+
+
+
 }
 
-// function RecursOpen(x) {
-//         if (x.className === 'close') {
-//             x.className = 'open';
-//             return x +=x;
-//            RecursOpen(x);
-//             }
-// };
 
-
-myTable.addEventListener('click', addclass);
-
-
+function RecurseOpen (x, y) {
+    const myTable = document.getElementById('myTable');
+    const cellValue = myTable.children[0].children[y].children[x].innerHTML;
+    console.log(x,y);
+    openCell(x,y);
+    if (cellValue !== '') {
+        return false;
+    }
+    if(cellValue.className === 'open'){
+        return false;
+    }
+    if(cellValue > row){
+        return false;
+    }
+             debugger;
+        const x_begin = x > 0 ? x - 1 : x;
+        const y_begin = y > 0 ? y - 1 : y;
+        for (let i = x_begin; i < x + 1 && i < row; i++) {
+            for (let j = y_begin; j < y + 1 && j < cell; j++) {
+                     RecurseOpen(i,j);
+                }
+            }
+};
 
 function add (e) {
     const event = e || window.event;
@@ -62,8 +100,14 @@ function add (e) {
         if(target.className === 'open'){
             return false
         }else {
-            target.className = 'lock';
-            e.preventDefault();
+            if(target.className !== 'lock' && target.className !== 'close lock') {
+                target.classList.add('lock');
+                e.preventDefault();
+            }else {
+                target.classList.remove('lock');
+                e.preventDefault();
+                target.classList.add('close');
+            }
         }
     }
 }

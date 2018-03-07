@@ -21,15 +21,12 @@ export class Table {
             tbody.appendChild(tr);
             for( let j = 0; j < this._cell; j++ ) {
                 const td = document.createElement('TD');
-
                 for(let k = 0; k < this.mineСoordinates.length; k++){
                     if (i === this.mineСoordinates[k].x && j === this.mineСoordinates[k].y) {
                         td.className = 'mine';
-
-                    }
+                        }
                     if(td.className !== 'mine'){
                         td.className = 'close';
-
                     }
                 }
                 tr.appendChild(td);
@@ -57,7 +54,7 @@ export class Table {
                     const isMine = cell.includes('mine');
                     const cellValue = myTable.children[0].children[x].children[y].innerHTML = +myTable.children[0].children[x].children[y].innerHTML ;
                     if (x >= 0 && x < this._row && y >= 0 && y < this._cell && !isMine) {
-                        myTable.children[0].children[x].children[y].innerHTML = cellValue  + 1  ;
+                        myTable.children[0].children[x].children[y].innerHTML = cellValue + 1  ;
                         //myTable.children[0].children[x].children[y].className = 'around_mine';
 
                     }
