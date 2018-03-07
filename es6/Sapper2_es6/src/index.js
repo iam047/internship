@@ -11,7 +11,7 @@ function addclass (e) {
     if (target.tagName === 'TD') {
         if(target.className === 'mine') {
             let x = document.getElementsByTagName('td');
-            for(let i = 0; i < x.length; i++){
+            for(let i = 0; i < x.length ; i++){
                 if (x[i].className === 'mine') {
                     x[i].className = 'bomb';
                 }
@@ -35,7 +35,7 @@ function open (e) {
         const indexOf = Array.prototype.indexOf;
         const y = indexOf.call(myTable.children[0].children, e.target.parentNode);
         const x = indexOf.call(e.target.parentNode.children, e.target);
-        if (target.className !== 'close lock') {
+        if (target.className !== 'lock') {
             if(target.className !== 'open') {
                 RecurseOpen(x, y);
                 let td = document.getElementsByClassName('close');
@@ -54,16 +54,11 @@ myTable.addEventListener('click', open);
 function openCell(x, y) {
     const myTable = document.getElementById('myTable');
     const cell = myTable.children[0].children[y].children[x];
-    if(cell.className === 'open'){
-        return false;
-    } else {
         if(cell.className !=='mine') {
-            if(cell.className !== 'close lock') {
+            if(cell.className !== 'lock') {
                 cell.className = 'open'
             }
         }
-    }
-
 
 
 }
@@ -72,26 +67,29 @@ function openCell(x, y) {
 function RecurseOpen (x, y) {
     const myTable = document.getElementById('myTable');
     const cellValue = myTable.children[0].children[y].children[x].innerHTML;
-    console.log(x,y);
+    const cellClass = myTable.children[0].children[y].children[x].className;
     openCell(x,y);
     if (cellValue !== '') {
         return false;
     }
-    if(cellValue.className === 'open'){
+
+
+
+
+    if(cellClass === 'open'){
         return false;
     }
-    if(cellValue > row){
-        return false;
-    }
-             debugger;
+
         const x_begin = x > 0 ? x - 1 : x;
         const y_begin = y > 0 ? y - 1 : y;
-        for (let i = x_begin; i < x + 1 && i < row; i++) {
-            for (let j = y_begin; j < y + 1 && j < cell; j++) {
-                     RecurseOpen(i,j);
+        for (let i = x_begin; i <= x + 1 && i < row; i++) {
+            for (let j = y_begin; j <= y + 1 && j < cell; j++) {
+                RecurseOpen(i,j);
                 }
             }
+
 };
+
 
 function add (e) {
     const event = e || window.event;
@@ -99,9 +97,9 @@ function add (e) {
     if (target.tagName === 'TD') {
         if(target.className === 'open'){
             return false
-        }else {
+        } else {
             if(target.className !== 'lock' && target.className !== 'close lock') {
-                target.classList.add('lock');
+                target.className = 'lock';
                 e.preventDefault();
             }else {
                 target.classList.remove('lock');

@@ -10,25 +10,34 @@
             border: 0;
         }
          .close{
-             background: black;
              cursor: default;
              -webkit-user-select: none;
              -moz-user-select: none;
              -ms-user-select: none;
+              text-indent:-9999px;
+             background: lightcoral;
+
+
          }
          table {
             border: 4px solid black;
+             width: 600px;
+             height: 600px;
         }
          td {
             border: 2px solid black;
             width: 50px;
             height: 50px;
             background: black;
+
+
+
         }
         td.open {
             background: white;
             text-align: center;
             position: relative;
+
         }
         td.lock{
             background-size: 50px auto;
@@ -36,12 +45,13 @@
             background-image: url("http://www.iconsearch.ru/uploads/icons/iconslandgps/128x128/flag1rightgreen2.png" );
         }
         td.mine{
-            background: rebeccapurple;
+            text-indent:-9999px;
+            background: lightcoral;
         }
         td.bomb{
-            background: white;
+            text-indent:-9999px;
             background-size: 50px auto;
-            background-image: url("http://www.iconsearch.ru/uploads/icons/nuvola2/128x128/clanbomber.png");
+            background-image: url("https://png.pngtree.com/element_origin_min_pic/20/16/01/2656a781cb1d0fc.jpg");
         }
         button{
             background-color: #4CAF50; /* Green */
@@ -55,24 +65,15 @@
             border-radius: 50%;
 
         }
-        .hidden {
-            visibility:hidden;
-        }
-        .visible{
-            visibility: visible;
-        }
+
         .red {
-            background: rebeccapurple;
+            color: #FF0000
         }
-        .around_mine {
-             background: #2a62bc;
-        }
+
 
     </style>
 </head>
 <body>
 <script src="dist/main.js"></script>
-
 </body>
-<button class="hidden">Restart</button>
 </html>

@@ -27,6 +27,7 @@ export class Table {
                         }
                     if(td.className !== 'mine'){
                         td.className = 'close';
+                        ;
                     }
                 }
                 tr.appendChild(td);
@@ -44,6 +45,18 @@ export class Table {
         return arr;
     };
 
+
+    getColorNumber (number){
+      const color = {
+            "0": "#0D47A1",
+            "1": "#4CAF50",
+            "2": "#D50000",
+            "3": "#1A237E",
+            "4": "#E65100"
+      } ;
+      let td= document.getElementsByTagName('td');
+       return td.innerHTML = color[number];
+    }
     _setMineNumberToCell() {
         this.mineСoordinates.forEach(({x, y}) => {
             const cells = this._getNerestMinest(x, y);
@@ -54,10 +67,15 @@ export class Table {
                     const isMine = cell.includes('mine');
                     const cellValue = myTable.children[0].children[x].children[y].innerHTML = +myTable.children[0].children[x].children[y].innerHTML ;
                     if (x >= 0 && x < this._row && y >= 0 && y < this._cell && !isMine) {
-                        myTable.children[0].children[x].children[y].innerHTML = cellValue + 1  ;
-                        //myTable.children[0].children[x].children[y].className = 'around_mine';
+                       const color = this.getColorNumber(cellValue);
+                       const td = myTable.children[0].children[x].children[y];
+                        td.style.color = color;
+                        td.innerHTML = cellValue + 1;
+
+
 
                     }
+
                 }
             });
 
