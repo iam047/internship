@@ -1,0 +1,288 @@
+html, body {
+  font-family: Arial, sans-serif;
+  background: #969696;
+}
+
+header {
+  a {
+    display: inline-block;
+    color: cornflowerblue;
+    text-decoration: none;
+
+    :hover {
+      cursor: pointer;
+      color: black;
+    }
+    :active {
+      top: 1px;
+    }
+  }
+
+}
+
+button {
+  display: inline-block;
+  margin: 0;
+  font-size: 1em;
+  color: white;
+  padding: 10px;
+  background: #5471a0;
+  border: none;
+}
+
+.active {
+  background: #425983;
+}
+
+button:hover {
+  cursor: pointer;
+}
+button:active {
+  background: #425983;
+}
+button:focus {
+  outline: none;
+}
+
+.content {
+  margin: 0 auto;
+  width: 85%;
+}
+
+#albums {
+
+  .album-create-input {
+    display: inline-block;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-shadow: none;
+    font-size: 1em;
+    padding: 10px;
+    color: #343434;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+  }
+  .album-create-input:focus {
+    border: solid 1px #707070;
+    box-shadow: 0 0 5px 1px #969696;
+    outline: none;
+  }
+
+  .album-create-button {
+    display: inline-block;
+    margin: 0;
+    font-size: 1em;
+    color: #ebebff;
+    padding: 10px;
+    background: #5471a0;
+    border: none;
+  }
+  .album-create-button:hover {
+    cursor: pointer;
+  }
+  .album-create-button:active {
+    background: #425983;
+  }
+  .album-create-button:focus {
+    outline: none;
+  }
+
+  .albums-list {
+    padding: 0;
+
+    .album {
+      position: relative;
+      display: block;
+      padding: 10px 25px;
+      margin-bottom: 20px;
+      background: #5471a0;
+
+      .album-title {
+        font-size: 2em;
+        font-weight: 100;
+        float: left;
+      }
+
+      a {
+        display: inline-block;
+        color: #ebebff;
+        text-decoration: none;
+
+        :hover {
+          cursor: pointer;
+          color: white;
+        }
+
+        :active {
+          top: 1px;
+        }
+      }
+
+      .remove-album {
+        position: absolute;
+        display: block;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: black;
+        font-size: 1em;
+      }
+      .remove-album:hover {
+        color: red;
+        cursor: pointer;
+      }
+      .remove-album:active {
+        top: 11px;
+      }
+      .remove-album:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+#photos {
+
+  .switch-upload-file, .switch-upload-cam{
+    width: 47%;
+    margin: 0 1%;
+  }
+
+  .upload-image-wrap {
+    margin: 0 auto;
+    width: 500px;
+  }
+
+  .capture-camera {
+    max-width: 500px;
+  }
+
+  .new-image-title {
+    width: 415px;
+    display: inline-block;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-shadow: none;
+    font-size: 1em;
+    padding: 10px;
+    color: #343434;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+  }
+  .new-image-title:focus {
+    border: solid 1px #707070;
+    box-shadow: 0 0 5px 1px #969696;
+    outline: none;
+  }
+
+  .save-image-button {
+    display: inline-block;
+    margin: 0;
+    font-size: 1em;
+    color: #ebebff;
+    padding: 10px;
+    background: #5471a0;
+    border: none;
+  }
+  .save-image-button:hover {
+    cursor: pointer;
+  }
+  .save-image-button:active {
+    background: #425983;
+  }
+  .save-image-button:focus {
+    outline: none;
+  }
+
+  .image-upload {
+    //width: 126px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    font-size: 1em;
+    color: #ebebff;
+    padding: 10px;
+    background: #5471a0;
+    border: none;
+
+    input.select-image-input {
+      display: block;
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    .select-image-label {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      cursor: inherit;
+    }
+  }
+  .image-upload:hover {
+    cursor: pointer;
+  }
+  .image-upload:active {
+    background: #425983;
+  }
+
+  button.take-photo {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .selected-image {
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .photo {
+    position: relative;
+    display: block;
+    float: left;
+    background: #343434;
+    margin: 2px;
+    width: 200px;
+    height: 230px;
+
+    .photo-image {
+      width: inherit;
+      height: 200px;
+    }
+
+    .remove-photo {
+      position: absolute;
+      display: block;
+      top: 5px;
+      right: 5px;
+      border: none;
+      color: gray;
+      background: darkslateblue;
+      border-radius: 3px;
+      font-size: 1em;
+    }
+
+    .remove-photo:hover {
+      color: gainsboro;
+      background: black;
+      cursor: pointer;
+    }
+    .remove-photo:active {
+      top: 11px;
+    }
+    .remove-photo:focus {
+      outline: none;
+    }
+
+    .photo-title {
+      color: #e8e8e8;
+      margin: 3px 3px;
+    }
+  }
+}

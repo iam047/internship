@@ -1,0 +1,2 @@
+gallery
+npm run start
